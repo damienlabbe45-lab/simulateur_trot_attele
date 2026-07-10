@@ -52,4 +52,9 @@ def generate_run() -> dict[str, list[int]]:
     return dict_horse
 
 
-
+def run_horse() -> None:
+    dict_horse = generate_run()
+    type_run = input_type_run()
+    while len(dict_horse) > 0:
+        input_user()
+        pass
