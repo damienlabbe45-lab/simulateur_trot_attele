@@ -53,8 +53,31 @@ def generate_run() -> dict[str, list[int]]:
 
 
 def run_horse() -> None:
+    """fonction servant à faire la course avec les chevaux"""
     dict_horse = generate_run()
     type_run = input_type_run()
-    while len(dict_horse) > 0:
+    results_run = []
+    while dict_horse is not None and len(dict_horse) > 0:
         input_user()
-        pass
+        dict_horse , results_run = secrets_run_horse(dict_horse.copy(), results_run)
+
+
+def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
+    global RESULTS_SPEED, SPEED_DIST
+    dict_horse_copy = dict_horse.copy()
+    for horse in dict_horse:
+        value = SystemRandom().randint(1 ,6)
+        value_speed = RESULTS_SPEED[dict_horse_copy[horse][1], value]
+        if isinstance(value_speed, int):
+            dict_horse_copy[horse][1] += value
+            dict_horse_copy[horse][0] += SPEED_DIST[value]
+            if dict_horse_copy[horse][0] >= 2400:
+                results_run.append(horse)
+                del dict_horse_copy
+        else:
+            del dict_horse_copy[horse]
+    return dict_horse_copy,results_run
+
+
+
+        
