@@ -1,11 +1,15 @@
 from pandas import DataFrame
+from secrets import SystemRandom
 
 
 
-"""Ce fichier servira pour la simulation du trot. la constante RESULT_SPEED est la version en DataFrame du tableau 1 de l'exercice 2"""
+"""Ce fichier servira pour la simulation du trot. la constante RESULT_SPEED est la version en DataFrame du tableau 1 de l'exercice 2
+la constante SPEED_DIST représenta la distance parcourue en 10 secondes en fonction de la vitesse"""
 
 RESULTS_SPEED = DataFrame(data = [[0, 1, 1, 1, 2, 2], [0, 0, 1, 1, 1, 2], [0, 0, 1, 1, 1, 2], [-1, 0, 0, 1, 1, 1], 
                                   [-1, 0, 0, 0, 1, 1], [-2, -1, 0, 0, 0, 1], [-2, -1, 0, 0, 0, "DQ"]], columns = list(range(1,7)))
+
+SPEED_DIST = [0, 23, 46, 69, 92, 115, 138]
 
 
 
@@ -31,3 +35,6 @@ def input_type_run() -> int:
                 type_run = int(input_user)
     if isinstance(type_run , int):
         return type_run
+    
+
+
