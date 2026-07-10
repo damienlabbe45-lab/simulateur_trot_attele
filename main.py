@@ -73,11 +73,14 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
         if isinstance(value_speed, int):
             dict_horse_copy[horse][1] += value
             dict_horse_copy[horse][0] += SPEED_DIST[value]
+            print(f'{horse} vient de parcourir {dict_horse_copy[horse][0]} mètres !!!!!!!!!!!!!!!!!!!')
             if dict_horse_copy[horse][0] >= 2400:
+                print(f"{horse} vient de franchir la ligne d'arrivée !!!!!!!!!!!!!")
                 results_run.append(horse)
-                del dict_horse_copy
+                del dict_horse_copy[horse]
         else:
             del dict_horse_copy[horse]
+            print(f"{horse} a été dq car il est au galop.")
     return dict_horse_copy,results_run
 
 
