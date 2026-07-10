@@ -91,4 +91,17 @@ def print_results(results_run: list[str], type_run:int) -> None:
             print(f"en 1er, on a {horse} !!!!")
         else:
             print(f" en {i}ème , on a {horse}")
+
+
+def main():
+    user = None
+    while user is None:
+        generate_run()
+        user = input("voulez vous recommencer à jouer? si oui tapez sur la touche entrée sinon tapez sur n'importe quel touche du clavier")
+        if user != "":
+            user = None
+
+
+if  __name__ == '__main__':
+    main()
         
