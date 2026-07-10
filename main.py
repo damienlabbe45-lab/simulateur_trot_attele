@@ -37,4 +37,9 @@ def input_type_run() -> int:
         return type_run
     
 
+def input_user() -> None:
+    """fonction servant juste à avancer la course de 10 secondes pour l'utilisateur"""
+    input("veillez appuyer pour faire avancer de 10 secondes la sourse")
+
+
 
