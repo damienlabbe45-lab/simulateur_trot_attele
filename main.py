@@ -42,4 +42,14 @@ def input_user() -> None:
     input("veillez appuyer pour faire avancer de 10 secondes la sourse")
 
 
+def generate_run() -> dict[str, list[int]]:
+    """fonction générant un dictionnaire ou la clé est un cheval (horse en aglais signifie cheval) associé 
+    à sa distance (la valeur indice 0 en python) et à sa vitesse (valeur indice 1 en python)"""
+    number_horse = input_number_horse()
+    dict_horse = {}
+    for horse in range(1,number_horse + 1):
+        dict_horse[f"horse {horse}"] = [0,0]
+    return dict_horse
+
+
 
