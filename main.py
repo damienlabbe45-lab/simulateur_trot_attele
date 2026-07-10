@@ -60,9 +60,11 @@ def run_horse() -> None:
     while dict_horse is not None and len(dict_horse) > 0:
         input_user()
         dict_horse , results_run = secrets_run_horse(dict_horse.copy(), results_run)
+    print_results(results_run, type_run)
 
 
 def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
+    """c'est dans cette fonction qu'on décide de la vitesse d'un cheval et si il est dq ou pas. mais chut, ca doit rester secret"""
     global RESULTS_SPEED, SPEED_DIST
     dict_horse_copy = dict_horse.copy()
     for horse in dict_horse:
@@ -79,5 +81,11 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
     return dict_horse_copy,results_run
 
 
-
+def print_results(results_run: list[str], type_run:int) -> None:
+    """la fonction sert juste à afficher dans l'ordre les chevaux en fonction du type de course"""
+    for i, horse in results_run[:type_run + 1]:
+        if i == 1:
+            print(f"en 1er, on a {horse} !!!!")
+        else:
+            print(f" en {i}ème , on a {horse}")
         
