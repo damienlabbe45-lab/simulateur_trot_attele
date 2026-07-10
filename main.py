@@ -20,3 +20,14 @@ def input_number_horse() -> int:
                 number_horse = input_user
     if isinstance(number_horse , int):
         return number_horse
+    
+
+def input_type_run() -> int:
+    """cette fonction permet de connaître le type de ccourse souhaités par l'utilisateur"""
+    type_run = None
+    while type_run is None:
+        input_user = input("Veillez indiquer s'il vous plaît le type de course en mettant 3 pour un tiercé, 4 pour un quarté et 5 pour un quinté")
+        if input_user == "3"or input_user == "4" or input_user == "5":
+                type_run = int(input_user)
+    if isinstance(type_run , int):
+        return type_run
