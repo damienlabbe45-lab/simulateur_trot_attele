@@ -13,20 +13,20 @@ SPEED_DIST = [0, 23, 46, 69, 92, 115, 138]
 
 
 
-def input_number_horse() -> int:
+def input_number_horse() -> int:  # pyright: ignore[reportReturnType]
     """cette fonction permet de connaître le nombre de chevaux souhaités par l'utilisateur"""
     number_horse = None
     while number_horse is None:
         input_user = input("Veillez indiquer s'il vous plaît un nombre de chevaux entre 12 et 20")
         if input_user.isdigit():
             input_user = int(input_user)
-            if 12 >= input_user and input_user<= 20:
+            if 12 <= input_user <= 20:
                 number_horse = input_user
     if isinstance(number_horse , int):
         return number_horse
     
 
-def input_type_run() -> int:
+def input_type_run() -> int: # pyright: ignore[reportReturnType]
     """cette fonction permet de connaître le type de ccourse souhaités par l'utilisateur"""
     type_run = None
     while type_run is None:
@@ -68,11 +68,11 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
     global RESULTS_SPEED, SPEED_DIST
     dict_horse_copy = dict_horse.copy()
     for horse in dict_horse:
-        value = SystemRandom().randint(1 ,6)
-        value_speed = RESULTS_SPEED[dict_horse_copy[horse][1], value]
+        value = SystemRandom().randint(1 ,6) #NOSONAR
+        value_speed = RESULTS_SPEED.loc[dict_horse_copy[horse][1], value]
         if isinstance(value_speed, int):
-            dict_horse_copy[horse][1] += value
-            dict_horse_copy[horse][0] += SPEED_DIST[value]
+            dict_horse_copy[horse][1] += value_speed
+            dict_horse_copy[horse][0] += SPEED_DIST[dict_horse_copy[horse][1]]
             print(f'{horse} vient de parcourir {dict_horse_copy[horse][0]} mètres !!!!!!!!!!!!!!!!!!!')
             if dict_horse_copy[horse][0] >= 2400:
                 print(f"{horse} vient de franchir la ligne d'arrivée !!!!!!!!!!!!!")
@@ -86,17 +86,17 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
 
 def print_results(results_run: list[str], type_run:int) -> None:
     """la fonction sert juste à afficher dans l'ordre les chevaux en fonction du type de course"""
-    for i, horse in results_run[:type_run + 1]:
+    for i, horse in results_run[:type_run ]:
         if i == 1:
             print(f"en 1er, on a {horse} !!!!")
         else:
             print(f" en {i}ème , on a {horse}")
 
 
-def main():
+def main() -> None:
     user = None
     while user is None:
-        generate_run()
+        run_horse()
         user = input("voulez vous recommencer à jouer? si oui tapez sur la touche entrée sinon tapez sur n'importe quel touche du clavier")
         if user != "":
             user = None
