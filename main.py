@@ -68,7 +68,7 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
     ca doit rester secret"""
     global RESULTS_SPEED, SPEED_DIST
     dict_horse_copy = dict_horse.copy()
-    for horse in dict_horse.keys():
+    for horse in dict_horse:
         value = SystemRandom().randint(1, 6)  #NOSONAR
         value_speed = RESULTS_SPEED.loc[dict_horse_copy[horse][1], value]
         if not isinstance(value_speed, str):
@@ -88,7 +88,7 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
 def print_results(results_run: list[str], type_run: int) -> None:
     """la fonction sert juste à afficher dans l'ordre les chevaux en fonction du type de course"""
     for i, horse in enumerate(results_run[:type_run]):
-        if i + 1 == 1:
+        if i == 0:
             print(f"en 1er, on a {horse} !!!!")
         else:
             print(f" en {i + 1}ème , on a {horse}")
