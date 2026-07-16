@@ -25,7 +25,7 @@ def input_number_horse() -> int:  # pyright: ignore[reportReturnType]
 
 
 def input_type_run() -> int:  # pyright: ignore[reportReturnType]
-    """cette fonction permet de connaître le type de ccourse souhaités par l'utilisateur"""
+    """cette fonction permet de connaître le type de course souhaités par l'utilisateur"""
     type_run = None
     while type_run is None:
         input_user = input(
@@ -39,7 +39,7 @@ def input_type_run() -> int:  # pyright: ignore[reportReturnType]
 
 def input_user() -> None:
     """fonction servant juste à avancer la course de 10 secondes pour l'utilisateur"""
-    input("veillez appuyer pour faire avancer de 10 secondes la sourse")
+    input("veillez appuyer pour faire avancer de 10 secondes la course")
 
 
 def generate_run() -> dict[str, list[int]]:
