@@ -31,7 +31,7 @@ def input_type_run() -> int:  # pyright: ignore[reportReturnType]
         input_user = input(
             "Veillez indiquer s'il vous plaît le type de course en mettant 3 pour un tiercé, 4 pour un quarté et 5 "
             "pour un quinté")
-        if input_user == "3" or input_user == "4" or input_user == "5":
+        if input_user in ["3", "4", "5"]:
             type_run = int(input_user)
     if isinstance(type_run, int):
         return type_run
@@ -74,7 +74,11 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
         if not isinstance(value_speed, str):
             dict_horse_copy[horse][1] += int(value_speed) # pyright: ignore[reportArgumentType]
             dict_horse_copy[horse][0] += SPEED_DIST[dict_horse_copy[horse][1]]
-            print(f'{horse} vient de parcourir {dict_horse_copy[horse][0]} mètres !!!!!!!!!!!!!!!!!!!')
+            print(f'{horse:<10} vient de parcourir {dict_horse_copy[horse][0]} mètres !!!!!!!!!!!!!!!!!!!')
+            position = min(int(dict_horse_copy[horse][0] / 2400 * 40), 40)
+            inside_track = "=" * position + ">" + "-" * (40 - position)
+            print(f"{horse:<10} {inside_track}")
+            print()
             if dict_horse_copy[horse][0] >= 2400:
                 print(f"{horse} vient de franchir la ligne d'arrivée !!!!!!!!!!!!!")
                 results_run.append(horse)
@@ -101,7 +105,7 @@ def main() -> None:
         user = input(
             "voulez vous recommencer à jouer? si oui tapez sur la touche entrée sinon tapez sur n'importe quel touche "
             "du clavier")
-        if user != "":
+        if user == "":
             user = None
 
 
