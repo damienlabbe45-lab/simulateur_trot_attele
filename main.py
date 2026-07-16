@@ -72,7 +72,7 @@ def secrets_run_horse(dict_horse: dict[str, list[int]], results_run: list[str]):
         value = SystemRandom().randint(1, 6)  #NOSONAR
         value_speed = RESULTS_SPEED.loc[dict_horse_copy[horse][1], value]
         if not isinstance(value_speed, str):
-            dict_horse_copy[horse][1] += value_speed
+            dict_horse_copy[horse][1] += int(value_speed) # pyright: ignore[reportArgumentType]
             dict_horse_copy[horse][0] += SPEED_DIST[dict_horse_copy[horse][1]]
             print(f'{horse} vient de parcourir {dict_horse_copy[horse][0]} mètres !!!!!!!!!!!!!!!!!!!')
             if dict_horse_copy[horse][0] >= 2400:
